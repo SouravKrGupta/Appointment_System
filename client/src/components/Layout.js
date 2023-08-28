@@ -29,11 +29,11 @@ const Layout = ({ children }) => {
       icon: "fa-solid fa-list",
     },
 
-    // {
-    //   name: "Profile",
-    //   path: `/doctor/profile/${user?._id}`,
-    //   icon: "fa-solid fa-user",
-    // },
+    {
+      name: "Profile",
+      path: `/doctor/profile/${user?._id}`,
+      icon: "fa-solid fa-user",
+    },
   ];
   // =========== doctor menu ===============
 
