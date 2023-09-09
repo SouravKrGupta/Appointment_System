@@ -15,16 +15,17 @@ import Users from "./pages/admin/Users";
 import DoctorAppointments from "./pages/doctor/DoctorAppointments";
 import Profile from "./pages/doctor/Profile";
 import UserHomePage from "./pages/UserHomePage";
+import Footer from "./Footer/Footer";
+import Header from "./Header/Header";
 
 function App() {
   const { loading } = useSelector((state) => state.alerts);
- 
 
   return (
     <>
- 
-
       <BrowserRouter>
+        <Header></Header>
+
         {loading ? (
           <Spinner />
         ) : (
@@ -37,11 +38,11 @@ function App() {
                 </ProtectedRoute>
               }
             />
-             <Route
+            <Route
               path="/userHome"
               element={
                 <ProtectedRoute>
-                  <UserHomePage/>
+                  <UserHomePage />
                 </ProtectedRoute>
               }
             />
@@ -85,7 +86,7 @@ function App() {
                 </ProtectedRoute>
               }
             />
-           <Route
+            <Route
               path="/appointments"
               element={
                 <ProtectedRoute>
@@ -127,6 +128,8 @@ function App() {
             />
           </Routes>
         )}
+
+        <Footer></Footer>
       </BrowserRouter>
     </>
   );
