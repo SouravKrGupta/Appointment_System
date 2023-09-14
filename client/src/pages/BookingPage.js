@@ -1,4 +1,4 @@
-import { DatePicker, TimePicker, message } from "antd";
+import { DatePicker, TimePicker, Input, Select, message  } from "antd";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom";
 import Layout from "../components/Layout";
 import { hideLoading, showLoading } from "../redux/features/alertSlice";
 import "./../styles/LayoutStyles.css";
-
+const { Option } = Select;
 const BookingPage = () => {
   const { user } = useSelector((state) => state.user);
   const params = useParams();
@@ -14,6 +14,11 @@ const BookingPage = () => {
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
   const [isAvailable, setIsAvailable] = useState();
+  const [userAge, setUserAge] = useState("");
+  const [userDescription, setUserDescription] = useState("");
+  const [userBloodGroup, setUserBloodGroup] = useState("");
+  const [userWeight, setUserWeight] = useState("");
+  const [userHeight, setUserHeight] = useState("");
   const dispatch = useDispatch();
   // login user data
   const getUserData = async () => {
@@ -74,13 +79,22 @@ const handleAvailability = async () => {
         return alert("Date & Time Required");
       }
       dispatch(showLoading());
+
       const res = await axios.post(
         "/api/user/book-appointment",
         {
           doctorId: params.doctorId,
           userId: user._id,
           doctorInfo: doctors,
-          userInfo: user,
+          userInfo: {
+            name: user.name,
+            email: user.email,
+            age: userAge,
+            description: userDescription,
+            bloodGroup: userBloodGroup,
+            weight: userWeight,
+            height: userHeight,
+          },
           date: date,
           time: time,
         },
@@ -140,6 +154,45 @@ const handleAvailability = async () => {
                     format="HH:mm"
                     className="m-2 time-picker"
                     onChange={(time) => setTime(time && time.format("HH:mm"))}
+                  />
+                   <Input
+                    className="m-2"
+                    placeholder="Age"
+                    value={userAge}
+                    onChange={(e) => setUserAge(e.target.value)}
+                  />
+                  <Input
+                    className="m-2"
+                    placeholder="Description"
+                    value={userDescription}
+                    onChange={(e) => setUserDescription(e.target.value)}
+                  />
+                  <Select
+                    className="m-2"
+                    placeholder="Blood Group"
+                    value={userBloodGroup}
+                    onChange={(value) => setUserBloodGroup(value)}
+                  >
+                    <Option value="A+">A+</Option>
+                    <Option value="A-">A-</Option>
+                    <Option value="B+">B+</Option>
+                    <Option value="B-">B-</Option>
+                    <Option value="O+">O+</Option>
+                    <Option value="O-">O-</Option>
+                    <Option value="AB+">AB+</Option>
+                    <Option value="AB-">AB-</Option>
+                  </Select>
+                  <Input
+                    className="m-2"
+                    placeholder="Weight"
+                    value={userWeight}
+                    onChange={(e) => setUserWeight(e.target.value)}
+                  />
+                  <Input
+                    className="m-2"
+                    placeholder="Height"
+                    value={userHeight}
+                    onChange={(e) => setUserHeight(e.target.value)}
                   />
                   <div className="d-flex justify-content-center">
                     <button
