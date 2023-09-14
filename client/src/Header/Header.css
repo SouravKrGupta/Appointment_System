@@ -1,0 +1,23 @@
+.navbar-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-image: linear-gradient(to top, #628280 , #4b9faa);
+  padding: 20px 30px 8px 30px;
+  color: white;
+}
+
+
+
+.nav-btn-all {
+  display: flex;
+  list-style: none;
+  gap: 30px;
+}
+
+.nav-btn-link {
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+  text-transform: capitalize;
+}
