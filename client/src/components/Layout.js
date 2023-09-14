@@ -20,20 +20,16 @@ const Layout = ({ children }) => {
   const doctorMenu = [
     {
       name: "Home",
-      path: "/userHome",
+      path: "/doctor",
       icon: "fa-solid fa-house",
     },
     {
       name: "Appointments",
       path: "/doctor-appointments",
       icon: "fa-solid fa-list",
-    },
+    }
 
-    {
-      name: "Profile",
-      path: `/doctor/profile/${user?._id}`,
-      icon: "fa-solid fa-user",
-    },
+    
   ];
   // =========== doctor menu ===============
 
