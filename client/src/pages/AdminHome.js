@@ -5,7 +5,8 @@ const AdminHome = () => {
   return (
 <Layout>
   <Row>
-    <hi>Admin page</hi>
+    <h1>Admin page</h1>
+    {/* work on admin home page */}
   </Row>
 
 </Layout>

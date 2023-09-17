@@ -14,10 +14,8 @@ import Doctors from "./pages/admin/Doctors";
 import Users from "./pages/admin/Users";
 import DoctorAppointments from "./pages/doctor/DoctorAppointments";
 import Profile from "./pages/doctor/Profile";
-import DoctorHomePage from "./pages/DoctorHomePage";
-import Footer from "./Footer/Footer";
+
 import Header from "./Header/Header";
-import AdminHome from "./pages/AdminHome";
 
 function App() {
   const { loading } = useSelector((state) => state.alerts);
@@ -137,8 +135,6 @@ function App() {
             />
           </Routes>
         )}
-
-        <Footer></Footer>
       </BrowserRouter>
     </>
   );

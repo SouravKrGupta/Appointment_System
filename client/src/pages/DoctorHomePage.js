@@ -5,8 +5,11 @@ const DoctorHomePage = () => {
   return (
 <Layout>
   <Row>
-    <hi>Doctor page</hi>
+    <h1>hi</h1>
+    
+    {/* work on this page */}
   </Row>
+  <h1>Doctor page work</h1>
 
 </Layout>
   )
