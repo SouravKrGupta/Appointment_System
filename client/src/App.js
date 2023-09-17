@@ -6,7 +6,7 @@ import Spinner from "./components/Spinner";
 import ApplyDoctor from "./pages/ApplyDoctor";
 import Appointments from "./pages/Appointments";
 import BookingPage from "./pages/BookingPage";
-import HomePage from "./pages/HomePage";
+import NewHome from "./pages/Home";
 import Login from "./pages/Login";
 import NotificationPage from "./pages/NotificationPage";
 import Register from "./pages/Register";
@@ -35,11 +35,11 @@ function App() {
               path="/"
               element={
                 <ProtectedRoute>
-                  <HomePage />
+                  <NewHome />
                 </ProtectedRoute>
               }
             />
-            <Route
+            {/* <Route
               path="/doctor"
               element={
                 <ProtectedRoute>
@@ -54,7 +54,7 @@ function App() {
                   <AdminHome />
                 </ProtectedRoute>
               }
-            />
+            /> */}
             <Route
               path="/apply-doctor"
               element={

@@ -20,7 +20,7 @@ const Layout = ({ children }) => {
   const doctorMenu = [
     {
       name: "Home",
-      path: "/doctor",
+      path: "/",
       icon: "fa-solid fa-house",
     },
     {
