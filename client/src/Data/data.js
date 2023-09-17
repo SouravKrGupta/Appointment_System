@@ -16,6 +16,11 @@ export const userMenu = [
 // admin menu
 export const adminMenu = [
   {
+    name: "Statistics",
+    path: "/admin/statistics",
+    icon: "fa-solid fa-signal",
+  },
+  {
     name: "Home",
     path: "/admin",
     icon: "fa-solid fa-house",

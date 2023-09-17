@@ -5,6 +5,7 @@ import Layout from "./../../components/Layout";
 
 const Doctors = () => {
   const [doctors, setDoctors] = useState([]);
+  console.log(doctors);
   //getUsers
   const getDoctors = async () => {
     try {
@@ -86,7 +87,7 @@ const Doctors = () => {
 
   return (
     <Layout>
-      <h3 className="text-center m-3">All Doctors</h3>
+      <h3 className="text-center">All Doctors</h3>
       <Table columns={columns} dataSource={doctors} />
     </Layout>
   );

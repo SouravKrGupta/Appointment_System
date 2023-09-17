@@ -1,7 +1,7 @@
 /* Light mode styles */
 .main {
   padding: 20px;
-  height: 100vh;
+  min-height: 100vh;
   background-color: #fff;
   color: #3d3d3d;
 }

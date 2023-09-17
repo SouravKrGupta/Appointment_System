@@ -18,6 +18,7 @@ import DoctorHomePage from "./pages/DoctorHomePage";
 import Footer from "./Footer/Footer";
 import Header from "./Header/Header";
 import AdminHome from "./pages/AdminHome";
+import Statistic from "./pages/admin/Statistic";
 
 function App() {
   const { loading } = useSelector((state) => state.alerts);
@@ -47,7 +48,7 @@ function App() {
                 </ProtectedRoute>
               }
             />
-             <Route
+            <Route
               path="/admin"
               element={
                 <ProtectedRoute>
@@ -60,6 +61,14 @@ function App() {
               element={
                 <ProtectedRoute>
                   <ApplyDoctor />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/statistics"
+              element={
+                <ProtectedRoute>
+                  <Statistic />
                 </ProtectedRoute>
               }
             />
