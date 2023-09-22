@@ -44,8 +44,8 @@ const NewHome = () => {
     }
   }, []);
 
-  if (userdata?.user?.isAdmin && !userdata?.user?.isDoctor) {
-    return <AdminHome />;
+  if (userdata?.user?.isAdmin ) {
+    return <AdminHome /> ;
   }
   if (userdata?.user?.isDoctor && !userdata?.user?.isAdmin) {
     return <DoctorHomePage />;

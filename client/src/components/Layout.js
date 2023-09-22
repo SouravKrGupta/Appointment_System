@@ -27,9 +27,7 @@ const Layout = ({ children }) => {
       name: "Appointments",
       path: "/doctor-appointments",
       icon: "fa-solid fa-list",
-    }
-
-    
+    },
   ];
   // =========== doctor menu ===============
 
@@ -44,7 +42,7 @@ const Layout = ({ children }) => {
     <>
       <div className={`main`}>
         <div className="layout">
-          <div className="sidebar">
+          <div className="sidebar bg-info bg-gradient px-3">
             <div className="logo">
               <h6>AppointDoc</h6>
               <hr />
@@ -69,19 +67,23 @@ const Layout = ({ children }) => {
             </div>
           </div>
           <div className="content">
-            <div className="header">
-              <div className="header-content" style={{ cursor: "pointer" }}>
+            <div style={{backgroundColor:'#00CED4'}} className="header">
+              <div
+                className="header-content position-relative"
+                style={{ cursor: "pointer" }}
+              >
                 <Badge
+                style={{top:'-10px', left:'-7px'}}
+                  className="position-absolute"
                   count={
                     user && user.notification ? user.notification.length : 0
                   }
                   onClick={() => {
                     navigate("/notification");
                   }}
-                >
-                  <i className="fa-solid fa-bell"></i>
-                </Badge>
-              </div>
+                ></Badge>
+                <i className="fa-solid fa-bell "></i>
+              </div> 
               <div className="user-doctor-admin-name">
                 <h5>{user?.name}</h5>
               </div>

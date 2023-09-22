@@ -1,7 +1,7 @@
-const doctorModel = require('../models/doctorModel');
+const doctorModel = require("../models/doctorModel");
 const userModel = require("../models/userModel");
 
-
+//get all users
 const getAllUsersController = async (req, res) => {
   try {
     const users = await userModel.find({});
@@ -17,6 +17,31 @@ const getAllUsersController = async (req, res) => {
       message: "Error While Fetching Users",
       error,
     });
+  }
+};
+
+//delete user
+const deleteUsersController = async (req, res) => {
+  try {
+    const id = req.params.id;
+
+    console.log(id);
+    const user = await userModel.deleteOne({ _id: id });
+    if (user) {
+      res.status(200).send({
+        success: true,
+        message: "User Deleted",
+        data: user,
+      });
+    } else {
+      res.status(404).send({
+        success: false,
+        message: "Error While Deleting User",
+        error,
+      });
+    }
+  } catch (error) {
+    console.log(error);
   }
 };
 
@@ -39,6 +64,29 @@ const getAllDoctorsController = async (req, res) => {
   }
 };
 
+//Delete doctor
+const deleteDoctorsController = async (req, res) => {
+  try {
+    const id = req.params.id;
+    console.log(id);
+    const user = await doctorModel.deleteOne({ _id: id });
+    if (user) {
+      res.status(200).send({
+        success: true,
+        message: "Doctor Deleted",
+        data: user,
+      });
+    } else {
+      res.status(404).send({
+        success: false,
+        message: "Error While Deleting Doctor",
+        error,
+      });
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 // doctor account status
 const changeAccountStatusController = async (req, res) => {
@@ -69,5 +117,10 @@ const changeAccountStatusController = async (req, res) => {
   }
 };
 
-
-module.exports = { getAllDoctorsController, getAllUsersController, changeAccountStatusController };
+module.exports = {
+  getAllDoctorsController,
+  getAllUsersController,
+  deleteUsersController,
+  deleteDoctorsController,
+  changeAccountStatusController,
+};

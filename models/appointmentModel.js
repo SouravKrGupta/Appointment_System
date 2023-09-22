@@ -57,3 +57,6 @@ AppointmentModel.validateAppointment = async function () {
 };
 
 module.exports = AppointmentModel;
+
+
+

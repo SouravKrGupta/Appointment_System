@@ -14,8 +14,8 @@ import Doctors from "./pages/admin/Doctors";
 import Users from "./pages/admin/Users";
 import DoctorAppointments from "./pages/doctor/DoctorAppointments";
 import Profile from "./pages/doctor/Profile";
-
-import Header from "./Header/Header";
+import Header from "./Share/Header/Header";
+import Footer from "./Share/Footer/Footer";
 
 function App() {
   const { loading } = useSelector((state) => state.alerts);
@@ -45,7 +45,7 @@ function App() {
                 </ProtectedRoute>
               }
             />
-             <Route
+            <Route
               path="/admin"
               element={
                 <ProtectedRoute>
@@ -61,6 +61,7 @@ function App() {
                 </ProtectedRoute>
               }
             />
+            
             <Route
               path="/admin/users"
               element={
@@ -135,6 +136,8 @@ function App() {
             />
           </Routes>
         )}
+
+        <Footer/>
       </BrowserRouter>
     </>
   );

@@ -8,6 +8,8 @@ import moment from "moment";
 
 const DoctorAppointments = () => {
   const [appointments, setAppointments] = useState([]);
+  // console.log(appointments);
+
 
   const getAppointments = async () => {
     try {
@@ -73,6 +75,7 @@ const DoctorAppointments = () => {
       dataIndex: "actions",
       render: (text, record) => (
         <div className="d-flex">
+          getId(record)
           {record.status === "pending" && (
             <div className="d-flex">
               <button

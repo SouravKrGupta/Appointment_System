@@ -1,0 +1,25 @@
+/* table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    border: 1px solid gray;
+    padding: 30px;
+    background-image: linear-gradient(to right , #8bcf7c, rgb(137, 226, 232));
+} */
