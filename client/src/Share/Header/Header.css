@@ -2,9 +2,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-image: linear-gradient(to top, #628280 , #4b9faa);
+  background-image: linear-gradient(to bottom, #5b5064 , #1ca7b9);
   padding: 20px 100px 8px 100px;
   color: white;
+  width: auto;
 }
 
 

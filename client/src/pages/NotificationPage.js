@@ -111,11 +111,11 @@ const updateNotificationsInStore = (notifications) => {
   return (
     <Layout>
       <h3 className="p-3 text-center">Notifications</h3>
-      <Tabs>
+      <Tabs className="px-5">
         <Tabs.TabPane tab="New" key={0}>
-          <div className="d-flex justify-content-end">
+          <div className="d-flex justify-content-end p-2">
             <button
-              className="p-1 btn btn-warning"
+              className="p-1 btn btn-success"
               style={{ cursor: "pointer" }}
               onClick={handleMarkAllRead}
             >
@@ -125,12 +125,12 @@ const updateNotificationsInStore = (notifications) => {
           {user && user.notification && user.notification.length > 0 ? (
             user.notification.map((notificationMgs) => (
               <div
-                className="card"
+                className="card my-3"
                 style={{ cursor: "pointer" }}
                 key={notificationMgs._id}
               >
                 <div
-                  className="card-text"
+                  className="card-text p-2 fs-6"
                   onClick={() => {
                     navigate(notificationMgs.onClickPath);
                   }}
@@ -144,7 +144,7 @@ const updateNotificationsInStore = (notifications) => {
           )}
         </Tabs.TabPane>
         <Tabs.TabPane tab="Read" key={1}>
-          <div className="d-flex justify-content-end">
+          <div className="d-flex justify-content-end p-2">
             <button
               className="p-1 btn btn-danger"
               style={{ cursor: "pointer" }}
@@ -156,12 +156,12 @@ const updateNotificationsInStore = (notifications) => {
           {user && user.seennotification && user.seennotification.length > 0 ? (
             user.seennotification.map((notificationMgs) => (
               <div
-                className="card"
+                className="card my-3"
                 style={{ cursor: "pointer" }}
                 key={notificationMgs._id}
               >
                 <div
-                  className="card-text"
+                  className="card-text p-2 fs-6"
                   onClick={() => navigate(notificationMgs.onClickPath)}
                 >
                   {notificationMgs.message}

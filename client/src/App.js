@@ -6,7 +6,7 @@ import Spinner from "./components/Spinner";
 import ApplyDoctor from "./pages/ApplyDoctor";
 import Appointments from "./pages/Appointments";
 import BookingPage from "./pages/BookingPage";
-import HomePage from "./pages/HomePage";
+import NewHome from "./pages/Home";
 import Login from "./pages/Login";
 import NotificationPage from "./pages/NotificationPage";
 import Register from "./pages/Register";
@@ -14,11 +14,8 @@ import Doctors from "./pages/admin/Doctors";
 import Users from "./pages/admin/Users";
 import DoctorAppointments from "./pages/doctor/DoctorAppointments";
 import Profile from "./pages/doctor/Profile";
-import DoctorHomePage from "./pages/DoctorHomePage";
-import Footer from "./Footer/Footer";
-import Header from "./Header/Header";
-import AdminHome from "./pages/AdminHome";
-import Statistic from "./pages/admin/Statistic";
+import Header from "./Share/Header/Header";
+import Footer from "./Share/Footer/Footer";
 
 function App() {
   const { loading } = useSelector((state) => state.alerts);
@@ -36,11 +33,11 @@ function App() {
               path="/"
               element={
                 <ProtectedRoute>
-                  <HomePage />
+                  <NewHome />
                 </ProtectedRoute>
               }
             />
-            <Route
+            {/* <Route
               path="/doctor"
               element={
                 <ProtectedRoute>
@@ -55,7 +52,7 @@ function App() {
                   <AdminHome />
                 </ProtectedRoute>
               }
-            />
+            /> */}
             <Route
               path="/apply-doctor"
               element={
@@ -64,14 +61,7 @@ function App() {
                 </ProtectedRoute>
               }
             />
-            <Route
-              path="/admin/statistics"
-              element={
-                <ProtectedRoute>
-                  <Statistic />
-                </ProtectedRoute>
-              }
-            />
+            
             <Route
               path="/admin/users"
               element={
@@ -147,7 +137,7 @@ function App() {
           </Routes>
         )}
 
-        <Footer></Footer>
+        <Footer/>
       </BrowserRouter>
     </>
   );

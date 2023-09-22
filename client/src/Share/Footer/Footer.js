@@ -5,7 +5,7 @@ import './Footer.css';
 const Footer = () => {  
   return (
    <div className="footer-footer">
-     <footer  className="bg-dark text-white pt-4">
+     <footer  className="bg-dark text-white pt-4 w-100">
       <div className="pb-2">
         <div style={{ paddingLeft: "150px" }} className="row w-100 mx-auto">
           <div className="col-md-3 col-lg-3 col-xl-3 text-start mx-auto mt-3">

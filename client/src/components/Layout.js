@@ -20,7 +20,7 @@ const Layout = ({ children }) => {
   const doctorMenu = [
     {
       name: "Home",
-      path: "/doctor",
+      path: "/",
       icon: "fa-solid fa-house",
     },
     {
@@ -67,7 +67,7 @@ const Layout = ({ children }) => {
             </div>
           </div>
           <div className="content">
-            <div className="header">
+            <div style={{backgroundColor:'#00CED4'}} className="header">
               <div
                 className="header-content position-relative"
                 style={{ cursor: "pointer" }}
@@ -83,7 +83,7 @@ const Layout = ({ children }) => {
                   }}
                 ></Badge>
                 <i className="fa-solid fa-bell "></i>
-              </div>
+              </div> 
               <div className="user-doctor-admin-name">
                 <h5>{user?.name}</h5>
               </div>
