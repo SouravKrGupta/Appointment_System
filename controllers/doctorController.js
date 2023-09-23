@@ -65,8 +65,12 @@ const doctorAppointmentsController = async (req, res) => {
     const doctor = await doctorModel.findOne({ userId: req.body.userId });
 
     const appointments = await appointmentModel.find({
+<<<<<<< HEAD
       // doctorId: doctor._id,
     });
+=======
+
+>>>>>>> ed53ddd52daa4a51ba157571d791e544a70c4a58
     res.status(200).send({
       success: true,
       message: "Doctor Appointments Fetch Successfully",
