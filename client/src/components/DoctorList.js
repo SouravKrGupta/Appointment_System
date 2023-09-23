@@ -30,6 +30,9 @@ const DoctorList = ({ doctor }) => {
           <p>
             <b>Timings:</b> {doctor.starttime} - {doctor.endtime}
           </p>
+          <p>
+            <b>Email:</b> {doctor.email}
+          </p>
         </div>
       </div>
     </>

@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from "react";
 import Layout from "./../../components/Layout";
-
 import axios from "axios";
-
 import { message, Table } from "antd";
 import moment from "moment";
+import { useSelector } from "react-redux";
 
 const DoctorAppointments = () => {
   const [appointments, setAppointments] = useState([]);
-  // console.log(appointments);
+  console.log(appointments);
+  const { user } = useSelector((state) => state.user);
+
+  console.log(user);
+
 
 
   const getAppointments = async () => {
@@ -51,6 +54,27 @@ const DoctorAppointments = () => {
     }
   };
 
+  //delete Appointment
+  const deleteAppointment = async (record) => {
+    try {
+      setAppointments(appointments.filter((p) => p._id !== record._id));
+      const res = await axios.delete(
+        `/api/doctor/doctor-appointments/${record._id}`,
+        {
+          headers: {
+            "content-type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+      if (res.data.data.deletedCount > 0 && res.data.success) {
+        message.success(`Deleted Successfully`);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const columns = [
     {
       title: "ID",
@@ -75,8 +99,7 @@ const DoctorAppointments = () => {
       dataIndex: "actions",
       render: (text, record) => (
         <div className="d-flex">
-          getId(record)
-          {record.status === "pending" && (
+          {record.status === "pending" ? (
             <div className="d-flex">
               <button
                 className="m-1 btn btn-success "
@@ -89,6 +112,15 @@ const DoctorAppointments = () => {
                 onClick={() => handleStatus(record, "reject")}
               >
                 Reject
+              </button>
+            </div>
+          ) : (
+            <div>
+              <button
+                onClick={() => deleteAppointment(record)}
+                className="btn fs-6 btn-sm btn-warning bg-gradient"
+              >
+                Remove
               </button>
             </div>
           )}
