@@ -5,6 +5,7 @@ const {
   getDoctorByIdController,
   doctorAppointmentsController,
   updateStatusController,
+  deleteAppointmentController,
 } = require("../controllers/doctorController");
 const authMiddleware = require("../middlewares/authMiddleware");
 const router = express.Router();
@@ -20,6 +21,9 @@ router.post("/getDoctorById", authMiddleware, getDoctorByIdController);
 
 //GET Appointments
 router.get("/doctor-appointments", authMiddleware, doctorAppointmentsController);
+
+//Delete Appointments
+router.delete("/doctor-appointments/:id", authMiddleware, deleteAppointmentController);
 
 //POST Update Status
 router.post("/update-status", authMiddleware, updateStatusController);

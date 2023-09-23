@@ -65,7 +65,8 @@ const doctorAppointmentsController = async (req, res) => {
     const doctor = await doctorModel.findOne({ userId: req.body.userId });
 
     const appointments = await appointmentModel.find({
-
+      // doctorId: doctor._id,
+    });
     res.status(200).send({
       success: true,
       message: "Doctor Appointments Fetch Successfully",
@@ -78,6 +79,31 @@ const doctorAppointmentsController = async (req, res) => {
       error,
       message: "Error In Doctor Appointments",
     });
+  }
+};
+
+
+//Delete Appointment
+const deleteAppointmentController = async (req, res) => {
+  try {
+    const id = req.params.id;
+    // console.log(id);
+    const user = await appointmentModel.deleteOne({ _id: id });
+    if (user) {
+      res.status(200).send({
+        success: true,
+        message: "Appointment Deleted",
+        data: user,
+      });
+    } else {
+      res.status(404).send({
+        success: false,
+        message: "Error While Deleting Appointment",
+        error,
+      });
+    }
+  } catch (error) {
+    console.log(error);
   }
 };
 
@@ -118,5 +144,6 @@ module.exports = {
   updateProfileController,
   getDoctorByIdController,
   doctorAppointmentsController,
+  deleteAppointmentController,
   updateStatusController,
 };
