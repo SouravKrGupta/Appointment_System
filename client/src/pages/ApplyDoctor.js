@@ -1,16 +1,47 @@
-import { Col, Form, Input, Row, TimePicker, message } from "antd";
+import { AutoComplete, Col, Form, Input, Row, TimePicker, message } from "antd";
 import axios from "axios";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { hideLoading, showLoading } from "../redux/features/alertSlice";
 import Layout from "./../components/Layout";
 
 const ApplyDoctor = () => {
-  const { user } = useSelector((state) => state.user);
+  const [users, setUsers] = useState([]);
+  // console.log(users);
 
+  // store selected user
+  const [selectUser, setSelectUser] = useState();
+  // console.log(selectUser);
+
+  const { user } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  // const user1 = users.filter(
+  //   (user) => user?.isAdmin === false && user?.isDoctor === false
+  // );
+  // console.log(user1);
+
+  //get all user
+  const getUsers = async () => {
+    try {
+      const res = await axios.get("/api/admin/getAllUsers", {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
+      if (res.data.success) {
+        setUsers(res.data.data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getUsers();
+  }, []);
 
   const handleFinish = async (values) => {
     try {
@@ -44,11 +75,52 @@ const ApplyDoctor = () => {
       message.error("Something Went Wrong");
     }
   };
-  
+
   return (
     <Layout>
       <h3 className="text-center">Apply Doctor</h3>
-      <Form layout="vertical" onFinish={handleFinish} className="m-3 px-5">
+
+      {/* dropdown user name list */}
+      <div className="my-4 d-flex gap-1 justify-content-center align-items-center">
+        <label
+          style={{
+            backgroundImage: "linear-gradient(to top, #2E3192 , #1BFFFF)",
+          }}
+          className="fs-5 px-3 pb-1 text-white"
+          for=""
+        >
+          Choose a user :
+        </label>
+
+        <select
+          onChange={(e) => setSelectUser(e.target.value)}
+          className="px-3 py-1 w-25"
+          aria-label=""
+        >
+          <option value=""></option>
+          {users
+            .filter(
+              (user) => user?.isAdmin === false && user?.isDoctor === false
+            )
+            .map((u) => (
+              <option className="my-5">{u?.name}</option>
+            ))}
+        </select>
+      </div>
+
+
+      {/* Doctor Applying from */}
+      <Form
+        layout="vertical"
+        onFinish={handleFinish}
+        fields={[
+          {
+            name: ["firstName"],
+            value: selectUser,
+          },
+        ]}
+        className="m-3 px-5"
+      >
         <h4 className="">Personal Details : </h4>
         <Row gutter={20}>
           <Col xs={24} md={24} lg={8}>
@@ -58,7 +130,7 @@ const ApplyDoctor = () => {
               required
               rules={[{ required: true, message: "First name is required" }]}
             >
-              <Input type="text" placeholder="First Name" />
+              <Input type="text" placeholder="First Name" readOnly />
             </Form.Item>
           </Col>
           <Col xs={24} md={24} lg={8}>
