@@ -1,4 +1,4 @@
-import { AutoComplete, Col, Form, Input, Row, TimePicker, message } from "antd";
+import { Col, Form, Input, Row, TimePicker, message } from "antd";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -11,7 +11,7 @@ const ApplyDoctor = () => {
   // console.log(users);
 
   // store selected user
-  const [selectUser, setSelectUser] = useState();
+  const [selectUser, setSelectUser] = useState(null);
   // console.log(selectUser);
 
   const { user } = useSelector((state) => state.user);
@@ -44,6 +44,7 @@ const ApplyDoctor = () => {
   }, []);
 
   const handleFinish = async (values) => {
+    console.log(values);
     try {
       dispatch(showLoading());
       const starttime = values.starttime.format("HH:mm");
@@ -52,7 +53,8 @@ const ApplyDoctor = () => {
         "/api/user/apply-doctor",
         {
           ...values,
-          userId: user._id,
+          userId: selectUser,
+
           starttime,
           endtime,
         },
@@ -93,7 +95,9 @@ const ApplyDoctor = () => {
         </label>
 
         <select
-          onChange={(e) => setSelectUser(e.target.value)}
+          onChange={(e) => {
+            setSelectUser(e.target.value);
+          }}
           className="px-3 py-1 w-25"
           aria-label=""
         >
@@ -103,11 +107,12 @@ const ApplyDoctor = () => {
               (user) => user?.isAdmin === false && user?.isDoctor === false
             )
             .map((u) => (
-              <option className="my-5">{u?.name}</option>
+              <option key={u._id} value={u?._id} className="my-5">
+                {u?.name}
+              </option>
             ))}
         </select>
       </div>
-
 
       {/* Doctor Applying from */}
       <Form
@@ -116,7 +121,11 @@ const ApplyDoctor = () => {
         fields={[
           {
             name: ["firstName"],
-            value: selectUser,
+            value: users.find((user) => user._id === selectUser)?.name,
+          },
+          {
+            name: ["email"],
+            value: users.find((user) => user._id === selectUser)?.email,
           },
         ]}
         className="m-3 px-5"
@@ -160,7 +169,7 @@ const ApplyDoctor = () => {
               required
               rules={[{ required: true, message: "Email is required" }]}
             >
-              <Input type="email" placeholder="Email" />
+              <Input type="email" placeholder="Email" readOnly />
             </Form.Item>
           </Col>
           <Col xs={24} md={24} lg={8}>

@@ -137,7 +137,7 @@ function App() {
           </Routes>
         )}
 
-        <Footer/>
+        {/* <Footer/> */}
       </BrowserRouter>
     </>
   );

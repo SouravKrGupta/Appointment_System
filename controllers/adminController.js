@@ -93,19 +93,19 @@ const changeAccountStatusController = async (req, res) => {
   try {
     const { doctorId, status } = req.body;
     const doctor = await doctorModel.findByIdAndUpdate(doctorId, { status });
-    const user = await userModel.findOne({ _id: doctor.userId });
+    const user = await userModel.findByIdAndUpdate( doctor.userId,{isDoctor:true} );
     const notification = user.notification;
     notification.push({
       type: "doctor-account-request-updated",
       message: `Your Doctor Account Request Has ${status} `,
       onClickPath: "/notification",
     });
-    user.isDoctor = status === "approved" ? true : false;
-    await user.save();
+    // user.isDoctor = status === "approved";
+    // await user.save();
     res.status(201).send({
       success: true,
       message: "Account Status Updated",
-      data: doctor,
+      data: user,
     });
   } catch (error) {
     console.log(error);

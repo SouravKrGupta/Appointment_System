@@ -28,6 +28,12 @@ const Layout = ({ children }) => {
       path: "/doctor-appointments",
       icon: "fa-solid fa-list",
     },
+    {
+      name: "Profile",
+      path: `/doctor/profile/${user?._id}`,
+      icon: "fa-solid fa-list",
+    },
+
   ];
   // =========== doctor menu ===============
 

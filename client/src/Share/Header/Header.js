@@ -1,10 +1,9 @@
 import React from "react";
 import "./Header.css";
-import { useSelector } from "react-redux";
+
 
 const Header = () => {
-  // const { user } = useSelector((state) => state.user);
-  // console.log(user);
+
   return (
     <nav>
       <div className="navbar-navbar">
