@@ -83,6 +83,7 @@ const authController = async (req, res) => {
 // Appply Doctor Controller
 const applyDoctorController = async (req, res) => {
   try {
+    console.log(req.body)
     const newDoctor = await doctorModel({ ...req.body, status: "pending" });
     await newDoctor.save();
     const adminUser = await userModel.findOne({ isAdmin: true });
@@ -100,6 +101,7 @@ const applyDoctorController = async (req, res) => {
     res.status(201).send({
       success: true,
       message: "Doctor Account Applied Successfully",
+      doctor:newDoctor,
     });
   } catch (error) {
     console.log(error);
