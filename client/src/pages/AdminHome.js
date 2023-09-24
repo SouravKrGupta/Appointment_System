@@ -200,6 +200,7 @@ const AdminHome = () => {
                   fill="green"
                 />
                 <Bar barSize={70} dataKey="endtime" stackId="1" fill="green" />
+                <Bar barSize={70} dataKey="status" stackId="1" fill="green" />
               </BarChart>
             </ResponsiveContainer>
           </div>
