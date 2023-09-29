@@ -3,9 +3,9 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import Layout from "../components/Layout";
-import { hideLoading, showLoading } from "../redux/features/alertSlice";
-import "./../styles/LayoutStyles.css";
+import { hideLoading, showLoading } from "../../redux/features/alertSlice";
+import "../../styles/LayoutStyles.css";
+import Layout from "../../components/Layout";
 
 const BookingPage = () => {
   const { user } = useSelector((state) => state.user);

@@ -6,12 +6,12 @@ const DoctorList = ({ doctor }) => {
   return (
     <>
       <div
-        className="card m-2"
+        className="card"
         style={{ cursor: "pointer" }}
         onClick={() => navigate(`/doctor/book-appointment/${doctor._id}`)}
       >
         <div
-          className="card-header"
+          className="card-header fs-6 text-white bg-dark bg-gradient"
           style={{ textAlign: "center", fontWeight: "bold" }}
         >
           Dr. {doctor.firstName} {doctor.lastName}

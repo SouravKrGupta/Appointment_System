@@ -1,10 +1,12 @@
 import { Row } from "antd";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import DoctorList from "../components/DoctorList";
-import Layout from "../components/Layout";
+// import DoctorList from "../components/DoctorList";
+// import Layout from "../components/Layout";
+import DoctorList from "../../components/DoctorList";
+import Layout from "../../components/Layout";
 
-const UserPage = () => {
+const UserDoctors = () => {
   const [doctors, setDoctors] = useState([]);
   // login user data
 
@@ -33,13 +35,13 @@ const UserPage = () => {
   
   return (
     <Layout>
-      <h3 className="text-center">Home Page</h3>
+      <h3 className="text-center fs-4 mb-4">Doctor's Appointment Are Here</h3>
       <br />
-      <Row>
+      <Row className="gap-4 m-2">
         {doctors && doctors.map((doctor) => <DoctorList doctor={doctor} />)}
       </Row>
     </Layout>
   );
 };
 
-export default UserPage;
+export default UserDoctors;

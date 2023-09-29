@@ -3,9 +3,8 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ProtectedRoute from "./components/ProtectedRoute";
 import PublicRoute from "./components/PublicRoute";
 import Spinner from "./components/Spinner";
-import ApplyDoctor from "./pages/ApplyDoctor";
-import Appointments from "./pages/Appointments";
-import BookingPage from "./pages/BookingPage";
+import ApplyDoctor from "./pages/admin/ApplyDoctor";
+import Appointments from "./pages/user/Appointments";
 import NewHome from "./pages/Home";
 import Login from "./pages/Login";
 import NotificationPage from "./pages/NotificationPage";
@@ -16,6 +15,8 @@ import DoctorAppointments from "./pages/doctor/DoctorAppointments";
 import Profile from "./pages/doctor/Profile";
 import Header from "./Share/Header/Header";
 import Footer from "./Share/Footer/Footer";
+import UserDoctors from "./pages/user/UserDoctors";
+import BookingPage from "./pages/user/BookingPage";
 
 function App() {
   const { loading } = useSelector((state) => state.alerts);
@@ -61,7 +62,7 @@ function App() {
                 </ProtectedRoute>
               }
             />
-            
+
             <Route
               path="/admin/users"
               element={
@@ -103,6 +104,14 @@ function App() {
               }
             />
             <Route
+              path="/user-doc"
+              element={
+                <ProtectedRoute>
+                  <UserDoctors />
+                </ProtectedRoute>
+              }
+            />
+            <Route
               path="/doctor-appointments"
               element={
                 <ProtectedRoute>
@@ -137,7 +146,7 @@ function App() {
           </Routes>
         )}
 
-        {/* <Footer/> */}
+        <Footer />
       </BrowserRouter>
     </>
   );

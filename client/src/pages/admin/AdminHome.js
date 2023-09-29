@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Layout from "./../components/Layout";
+import Layout from "../../components/Layout";
 import axios from "axios";
 import "./AdminHome.css";
 
@@ -141,7 +141,6 @@ const AdminHome = () => {
         </div>
 
         <div className="mx-auto pt-5" style={{ width: "100%" }}>
-          
           <div className="text-center d-flex justify-content-center">
             <span
               style={{

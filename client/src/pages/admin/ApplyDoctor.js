@@ -3,8 +3,8 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { hideLoading, showLoading } from "../redux/features/alertSlice";
-import Layout from "./../components/Layout";
+import { hideLoading, showLoading } from "../../redux/features/alertSlice";
+import Layout from "../../components/Layout";
 
 const ApplyDoctor = () => {
   const [users, setUsers] = useState([]);
@@ -12,7 +12,7 @@ const ApplyDoctor = () => {
 
   // store selected user
   const [selectUser, setSelectUser] = useState(null);
-  // console.log(selectUser);
+  console.log(selectUser);
 
   const { user } = useSelector((state) => state.user);
   const dispatch = useDispatch();

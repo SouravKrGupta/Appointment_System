@@ -1,0 +1,74 @@
+.service-part {
+  background: url("../../assets/images/services-bg.jpg") center no-repeat;
+  background-size: cover;
+}
+
+.single-services span {
+  font-size: 35px;
+  color: #0cb8b6;
+  display: inline-block;
+  border: 1px solid #0cb8b6;
+  width: 70px;
+  height: 70px;
+  line-height: 70px;
+  text-align: center;
+  border-radius: 50%;
+  position: relative;
+  z-index: 1;
+  margin-bottom: 15px;
+}
+
+.single-services span:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #dcfcfe;
+  margin: 5px;
+  border-radius: 50%;
+  z-index: -1;
+}
+
+.single-services {
+  text-align: center;
+  background-color: #fff;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.05);
+  padding: 30px;
+  z-index: 1;
+  transition: all 0.5s;
+  margin-bottom: 30px;
+  border-radius: 10px 10px 100px 10px;
+  overflow: hidden;
+}
+
+.single-services:hover {
+  transform: translateY(-5px);
+  background-color: #0cb8b6;
+  color: white;
+}
+
+h3 {
+  font-size: 1.19em;
+  font-weight: bold;
+}
+
+.appoint-poster {
+  background: linear-gradient(rgba(82, 65, 77, 0.6), rgba(56, 10, 10, 0.916)),
+    url("../../assets/images/client-bg.jpg") center no-repeat;
+  background-size: cover;
+  color: white;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .single-services {
+    padding: 20px;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  h3 {
+    font-size: 18px;
+  }
+}
