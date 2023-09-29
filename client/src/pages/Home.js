@@ -1,6 +1,6 @@
 import { React, useEffect } from "react";
 import AdminHome from "./admin/AdminHome";
-import DoctorHomePage from "./doctor/DoctorHomePage";
+import Doctor from "./doctor/DoctorAppointments";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { hideLoading, showLoading } from "../redux/features/alertSlice";
@@ -48,7 +48,7 @@ const NewHome = () => {
     return <AdminHome />;
   }
   if (userdata?.user?.isDoctor && !userdata?.user?.isAdmin) {
-    return <DoctorHomePage />;
+    return <Doctor />;
   }
   return <UserPage />;
 };
