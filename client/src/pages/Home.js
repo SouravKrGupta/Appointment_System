@@ -1,12 +1,12 @@
 import { React, useEffect } from "react";
-import AdminHome from "./AdminHome";
-import DoctorHomePage from "./DoctorHomePage";
-import UserPage from "./UserPage";
+import AdminHome from "./admin/AdminHome";
+import DoctorHomePage from "./doctor/DoctorHomePage";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { hideLoading, showLoading } from "../redux/features/alertSlice";
 import { setUser } from "../redux/features/userSlice";
 import { Navigate } from "react-router-dom";
+import UserPage from "./user/UserPage";
 
 const NewHome = () => {
   const userdata = useSelector((state) => state)?.user;
@@ -44,8 +44,8 @@ const NewHome = () => {
     }
   }, []);
 
-  if (userdata?.user?.isAdmin ) {
-    return <AdminHome /> ;
+  if (userdata?.user?.isAdmin) {
+    return <AdminHome />;
   }
   if (userdata?.user?.isDoctor && !userdata?.user?.isAdmin) {
     return <DoctorHomePage />;

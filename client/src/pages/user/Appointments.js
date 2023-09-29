@@ -2,8 +2,7 @@ import { Table } from "antd";
 import axios from "axios";
 import moment from "moment";
 import React, { useEffect, useState } from "react";
-import Layout from "./../components/Layout";
-
+import Layout from "../../components/Layout";
 
 const Appointments = () => {
   const [appointments, setAppointments] = useState([]);
