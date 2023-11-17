@@ -1,3 +1,3 @@
-# Appointment_System
-using MERN STACK project
-** screenshot of project **
+
+
+<h3 align="center">Appointment System</h3>
