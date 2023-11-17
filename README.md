@@ -2,11 +2,11 @@
 ## Appointment System
 
 ### Build with
-ReactJS
-NodeJS
-ExpressJS
-MongoDB
-Ants CSS
+1. ReactJS
+2. NodeJS
+3. ExpressJS
+4. MongoDB
+5. Ants CSS
 
 
 
